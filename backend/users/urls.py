@@ -1,0 +1,37 @@
+from django.urls import path
+from .views import (
+    RegisterView, UpdateSalaryView, UpdateExtraIncomeView, UpdateHousingView,
+    UpdateHasCreditView, CreditListCreateView, CreditDetailView,
+    UpdateSavingsGoalsView, UpdateMonthlyExpensesView, UpdateRecurringExpensesView,
+    UpdateFinancialAssessmentView, UpdateMonthlySavingsAbilityView, ExportPDFAPIView,
+    CompleteOnboardingView, FinancialInquiryStatusView, RetryPlanGenerationView,
+    FinancialSummaryAPIView, SavingsGoalsProgressAPIView, MonthlyBudgetTableAPIView,
+    BudgetComparisonAPIView, RecalculateBudgetAPIView, ExportExcelAPIView, OnboardingAnswersView, AddSavingsGoalView,
+)
+
+urlpatterns = [
+    path('register/', RegisterView.as_view(), name='register'),
+    path('financial-inquiry/answers/', OnboardingAnswersView.as_view(), name='onboarding-answers'),
+    path('financial-inquiry/salary/', UpdateSalaryView.as_view(), name='update-salary'),
+    path('financial-inquiry/extra-income/', UpdateExtraIncomeView.as_view(), name='update-extra-income'),
+    path('financial-inquiry/housing/', UpdateHousingView.as_view(), name='update-housing'),
+    path('financial-inquiry/has-credit/', UpdateHasCreditView.as_view(), name='update-has-credit'),
+    path('financial-inquiry/credits/', CreditListCreateView.as_view(), name='credit-list-create'),
+    path('financial-inquiry/credits/<int:pk>/', CreditDetailView.as_view(), name='credit-detail'),
+    path('financial-inquiry/savings-goals/add/', AddSavingsGoalView.as_view(), name='add-savings-goal'),
+    path('financial-inquiry/savings-goals/', UpdateSavingsGoalsView.as_view(), name='update-savings-goals'),
+    path('financial-inquiry/monthly-expenses/', UpdateMonthlyExpensesView.as_view(), name='update-monthly-expenses'),
+    path('financial-inquiry/recurring-expenses/', UpdateRecurringExpensesView.as_view(), name='update-recurring-expenses'),
+    path('financial-inquiry/financial-assessment/', UpdateFinancialAssessmentView.as_view(), name='update-financial-assessment'),
+    path('financial-inquiry/monthly-savings-ability/', UpdateMonthlySavingsAbilityView.as_view(), name='update-monthly-savings-ability'),
+    path('financial-inquiry/complete/', CompleteOnboardingView.as_view(), name='complete-onboarding'),
+    path('financial-inquiry/status/', FinancialInquiryStatusView.as_view(), name='inquiry-status'),
+    path('financial-inquiry/retry/', RetryPlanGenerationView.as_view(), name='retry-plan'),
+    path('summary/', FinancialSummaryAPIView.as_view(), name='financial-summary'),
+    path('summary/goals/', SavingsGoalsProgressAPIView.as_view(), name='savings-goals-progress'),
+    path('summary/table/', MonthlyBudgetTableAPIView.as_view(), name='monthly-budget-table'),
+    path('summary/comparison/', BudgetComparisonAPIView.as_view(), name='budget-comparison'),
+    path('summary/recalculate/', RecalculateBudgetAPIView.as_view(), name='budget-recalculate'),
+    path('summary/export/excel/', ExportExcelAPIView.as_view(), name='export-excel'),
+    path('summary/export/pdf/', ExportPDFAPIView.as_view(), name='export-pdf'),
+]
